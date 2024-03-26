@@ -1,0 +1,232 @@
+{
+  "Security": [
+    {"Service": "AWS CloudTrail"},
+    {"Service": "AWS Private CA"},
+    {"Service": "Amazon Inspector"},
+    {"Service": "AWS Artifact"},
+    {"Service": "AWS Audit Manager"},
+    {"Service": "AWS Config aggregator"},
+    {"Service": "Amazon EventBridge"},
+    {"Service": "Amazon GuardDuty"},
+    {"Service": "AWS Security Hub"},
+    {"Service": "AWS Firewall Manager"},
+    {"Service": "AWS IAM Access Analyzer"},
+    {"Service": "Amazon Macie"},
+    {"Service": "Amazon Detective"},
+    {"Service": "AWS KMS"}
+  ],
+  "Infrastructure": [
+    {"Service": "Inbound (ingress) VPC"},
+    {"Service": "Outbound (egress) VPC"},
+    {"Service": "Inspection VPC"},
+    {"Service": "AWS Network Firewall"},
+    {"Service": "Network Access Analyzer"},
+    {"Service": "AWS Resource Access Manager (RAM)"},
+    {"Service": "AWS Verified Access"},
+    {"Service": "Amazon VPC Lattice"},
+    {"Service": "Amazon CloudFront"},
+    {"Service": "Amazon Route 53"}
+  ],
+  "TerraformModules": [
+    {
+      "ModuleName": "aws-cloudtrail",
+      "ModuleSource": "your-org-name/cloudtrail/aws",
+      "Parameters": [
+        "name",
+        "s3_bucket",
+        "enable_logging",
+        "is_multi_region_trail",
+        "is_organization_trail",
+        "kms_key_id",
+        "cloud_watch_logs_group_arn",
+        "cloud_watch_logs_role_arn",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-private-ca",
+      "ModuleSource": "your-org-name/private-ca/aws",
+      "Parameters": [
+        "name",
+        "certificate_authority_configuration",
+        "revocation_configuration",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-inspector",
+      "ModuleSource": "your-org-name/inspector/aws",
+      "Parameters": [
+        "name",
+        "assessment_target_name",
+        "resource_group_arn",
+        "event_subscription",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-artifact",
+      "ModuleSource": "your-org-name/artifact/aws",
+      "Parameters": [
+        "name",
+        "type",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-audit-manager",
+      "ModuleSource": "your-org-name/audit-manager/aws",
+      "Parameters": [
+        "name",
+        "assessment_framework_id",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-config-aggregator",
+      "ModuleSource": "your-org-name/config-aggregator/aws",
+      "Parameters": [
+        "name",
+        "account_aggregation_source",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-eventbridge",
+      "ModuleSource": "your-org-name/eventbridge/aws",
+      "Parameters": [
+        "name",
+        "event_bus_name",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-guardduty",
+      "ModuleSource": "your-org-name/guardduty/aws",
+      "Parameters": [
+        "name",
+        "detector_id",
+        "finding_publishing_frequency",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-security-hub",
+      "ModuleSource": "your-org-name/security-hub/aws",
+      "Parameters": [
+        "name",
+        "standards_subscription",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-firewall-manager",
+      "ModuleSource": "your-org-name/firewall-manager/aws",
+      "Parameters": [
+        "name",
+        "policy",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-iam-access-analyzer",
+      "ModuleSource": "your-org-name/iam-access-analyzer/aws",
+      "Parameters": [
+        "name",
+        "analyzer_name",
+        "type",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-macie",
+      "ModuleSource": "your-org-name/macie/aws",
+      "Parameters": [
+        "name",
+        "finding_publishing_frequency",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-detective",
+      "ModuleSource": "your-org-name/detective/aws",
+      "Parameters": [
+        "name",
+        "graph_arn",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-kms",
+      "ModuleSource": "your-org-name/kms/aws",
+      "Parameters": [
+        "description",
+        "policy",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-network-firewall",
+      "ModuleSource": "your-org-name/network-firewall/aws",
+      "Parameters": [
+        "name",
+        "subnet_mapping",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-network-access-analyzer",
+      "ModuleSource": "your-org-name/network-access-analyzer/aws",
+      "Parameters": [
+        "name",
+        "analyzer_name",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-resource-access-manager",
+      "ModuleSource": "your-org-name/resource-access-manager/aws",
+      "Parameters": [
+        "name",
+        "sharing_account_ids",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-verified-access",
+      "ModuleSource": "your-org-name/verified-access/aws",
+      "Parameters": [
+        "name",
+        "config",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-vpc-lattice",
+      "ModuleSource": "your-org-name/vpc-lattice/aws",
+      "Parameters": [
+        "name",
+        "config",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-cloudfront",
+      "ModuleSource": "your-org-name/cloudfront/aws",
+      "Parameters": [
+        "name",
+        "distribution_config",
+        "tags"
+      ]
+    },
+    {
+      "ModuleName": "aws-route53",
+      "ModuleSource": "your-org-name/route53/aws",
+      "Parameters": [
+        "name",
+        "zone_config",
+        "tags"
+      ]
+    }
+  ]
+}
