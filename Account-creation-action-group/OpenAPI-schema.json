@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AWS Account Creation API",
+        "version": "1.0.0",
+        "description": "API to append a new Terraform module for AWS account creation."
+    },
+    "paths": {
+        "/create-account": {
+            "post": {
+                "summary": "Append Terraform Module",
+                "description": "Creates AWS account by calling AFT module",
+                "operationId": "createAwsAccount",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "AccountName": {
+                                        "type": "string"
+                                    },
+                                    "AccountEmail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "Email address associated with the AWS account"
+                                    },
+                                    "ManagedOrganizationalUnit": {
+                                        "type": "string",
+                                        "description": "AWS organization account belongs to",
+                                        "enum": ["Security", "Production", "Sandbox"]
+                                    },
+                                    "SSOUserFirstName": {
+                                        "type": "string"
+                                    },
+                                    "SSOUserLastName": {
+                                        "type": "string"
+                                    },
+                                    "ChangeReason": {
+                                        "type": "string"
+                                    },
+                                    "CustomizationName": {
+                                        "type": "string",
+                                        "description": "AWS account type",
+                                        "enum": ["Security", "Infrastructure"]
+                                    }
+                                },
+                                "required": [
+                                    "AccountName",
+                                    "AccountEmail",
+                                    "ManagedOrganizationalUnit",
+                                    "SSOUserFirstName",
+                                    "SSOUserLastName",
+                                    "ChangeReason",
+                                    "CustomizationName"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Module successfully appended to main.tf",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. One or more required fields are missing or invalid."
+                    }
+                }
+            }
+        }
+    }
+}
