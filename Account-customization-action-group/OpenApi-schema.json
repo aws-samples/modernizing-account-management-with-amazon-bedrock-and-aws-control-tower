@@ -1,0 +1,91 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bedrock Agent Lambda API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/customize-account": {
+            "post": {
+                "summary": "Account customization and Configuration",
+                "description": "Account customizations for security, sandbox and infrastructure AWS accounts",
+                "operationId": "createAccountCustomization",
+                "tags": [
+                    "Account Customization"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "CustomizationName": {
+                                        "type": "string",
+                                        "enum": ["Security", "Infrastructure"]
+                                    },
+                                    "AwsServices": {
+                                        "type": "string"
+                                    },
+                                    "AccountEmail": {
+                                        "type": "string"
+                                    },
+                                    "AccountName": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "CustomizationName",
+                                    "AwsServices",
+                                    "AccountEmail",
+                                    "AccountName"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully created configurations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "main_tf_path": {
+                                            "type": "string"
+                                        },
+                                        "readme_path": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error occurred",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "details": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
