@@ -113,7 +113,7 @@ def lambda_handler(event, context):
     print("Received event: " + json.dumps(event))
     try:
         properties = {prop["name"]: prop["value"] for prop in event["requestBody"]["content"]["application/json"]["properties"]}
-        repo_owner = 'ebbsleo'
+        repo_owner = os.environ['REPO_OWNER']
         repo_name = 'learn-terraform-aft-account-customizations'
         token = os.environ['GITHUB_TOKEN']
         kb_id = os.environ['KNOWLEDGE_BASE_ID']
